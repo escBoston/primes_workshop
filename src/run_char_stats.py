@@ -43,7 +43,7 @@ def rank_by_function(di, function):
         vals = [item[1].get_prime_count() for item in ordered]
     elif function=="avg_prime":
         ordered = sorted(di.items(), key=lambda x: x[1].get_avg_prime() if not math.isnan(x[1].get_avg_prime()) else 0, reverse=True)
-        vals = [item[1].get_avg_prime() for item in ordered]
+        vals = [round(item[1].get_avg_prime(), 2) for item in ordered]
     elif function=="prime_percentage":
         ordered = sorted(di.items(), key=lambda x: x[1].get_prime_percentage(), reverse=True)
         vals = [round(item[1].get_prime_percentage(), 4) for item in ordered]
@@ -65,8 +65,7 @@ def main():
     print("\nFor each character, how many times is it paired with a prime number?")
     print(rank_by_function(di, "prime_count"))
     print("\nWhat character has the highest average of prime numbers?")
-    od = rank_by_function(di, "avg_prime")
-    print(list(od.items())[0])
+    print(rank_by_function(di, "avg_prime"))
     print("\nRank the characters based on their prime number percentage")
     print(rank_by_function(di, "prime_percentage"))
     print(f"\nFinal error count: {error_count}")
