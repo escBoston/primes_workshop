@@ -4,6 +4,7 @@ import numpy as np
 import sympy as sp
 import string
 import math
+import warnings
 from collections import OrderedDict
 from importlib.machinery import SourceFileLoader
 
@@ -56,6 +57,7 @@ def print_counts(di):
 def main():
     df = pd.read_csv("../data/SearchForPrimes.csv", header=None)
     all_data = df.to_numpy().flatten()
+    warnings.filterwarnings("ignore")
     di, error_count = extract_data(all_data)
     #print_counts(di)
     print("\nFor each character, how many times does it occur in the file?")
